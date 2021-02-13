@@ -7,13 +7,13 @@ namespace Andr3as07.Logging.Sink {
     private static readonly object Lock = new ColoredConsoleSink();
 
     private static readonly Dictionary<LogLevel, (ConsoleColor, ConsoleColor)> ColorCodes = new Dictionary<LogLevel, (ConsoleColor, ConsoleColor)>() {
-      [LogLevel.TRACE] = (ConsoleColor.DarkMagenta, ConsoleColor.Black),
-      [LogLevel.DEBUG] = (ConsoleColor.Blue, ConsoleColor.Black),
-      [LogLevel.INFO] = (ConsoleColor.White, ConsoleColor.Black),
-      [LogLevel.WARNING] = (ConsoleColor.DarkYellow, ConsoleColor.Black),
-      [LogLevel.ERROR] = (ConsoleColor.DarkRed, ConsoleColor.Black),
-      [LogLevel.CRITICAL] = (ConsoleColor.Red, ConsoleColor.Black),
-      [LogLevel.EMERGENCY] = (ConsoleColor.Yellow, ConsoleColor.Red),
+      [LogLevel.Trace] = (ConsoleColor.DarkMagenta, ConsoleColor.Black),
+      [LogLevel.Debug] = (ConsoleColor.Blue, ConsoleColor.Black),
+      [LogLevel.Info] = (ConsoleColor.White, ConsoleColor.Black),
+      [LogLevel.Warning] = (ConsoleColor.DarkYellow, ConsoleColor.Black),
+      [LogLevel.Error] = (ConsoleColor.DarkRed, ConsoleColor.Black),
+      [LogLevel.Critical] = (ConsoleColor.Red, ConsoleColor.Black),
+      [LogLevel.Emergency] = (ConsoleColor.Yellow, ConsoleColor.Red),
     };
 
     public ColoredConsoleSink() {

@@ -62,31 +62,31 @@ namespace Andr3as07.Logging {
     }
 
     public void Trace(string message, params object[] data) {
-      Log(LogLevel.TRACE, message, data);
+      Log(LogLevel.Trace, message, data);
     }
 
     public void Debug(string message, params object[] data) {
-      Log(LogLevel.DEBUG, message, data);
+      Log(LogLevel.Debug, message, data);
     }
 
     public void Info(string message, params object[] data) {
-      Log(LogLevel.INFO, message, data);
+      Log(LogLevel.Info, message, data);
     }
 
     public void Warn(string message, params object[] data) {
-      Log(LogLevel.WARNING, message, data);
+      Log(LogLevel.Warning, message, data);
     }
 
     public void Error(string message, params object[] data) {
-      Log(LogLevel.ERROR, message, data);
+      Log(LogLevel.Error, message, data);
     }
 
     public void Critical(string message, params object[] data) {
-      Log(LogLevel.CRITICAL, message, data);
+      Log(LogLevel.Critical, message, data);
     }
 
     public void Emergency(string message, params object[] data) {
-      Log(LogLevel.EMERGENCY, message, data);
+      Log(LogLevel.Emergency, message, data);
     }
 
     public virtual void Flush() {

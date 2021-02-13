@@ -15,22 +15,22 @@ namespace Andr3as07.Logging.Sink {
     public void Dispatch(LogLevel level, DateTime time, string message, Dictionary<string, object> context, params object[] data) {
       string str = Formater.FormatText(level, time, message, context);
       switch(level) {
-        case LogLevel.ERROR:
-        case LogLevel.CRITICAL:
-        case LogLevel.EMERGENCY:
+        case LogLevel.Error:
+        case LogLevel.Critical:
+        case LogLevel.Emergency:
           Trace.TraceError(str);
           break;
 
-        case LogLevel.WARNING:
+        case LogLevel.Warning:
           Trace.TraceWarning(str);
           break;
 
-        case LogLevel.INFO:
+        case LogLevel.Info:
           Trace.TraceInformation(str);
           break;
 
-        case LogLevel.TRACE:
-        case LogLevel.DEBUG:
+        case LogLevel.Trace:
+        case LogLevel.Debug:
           Debug.WriteLine(str);
           break;
 
