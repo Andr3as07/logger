@@ -2,32 +2,41 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Andr3as07.Logging.Sink {
-  public class DiagnosticSink : ISink {
+  public class TraceSink : ISink {
     public readonly ITextFormater Formater;
 
-    public DiagnosticSink(ITextFormater formater) {
+    public TraceSink(ITextFormater formater) {
       this.Formater = formater;
     }
 
     public void Dispatch(LogLevel level, DateTime time, string message, Dictionary<string, object> context, params object[] data) {
       string str = Formater.FormatText(level, time, message, context);
       switch(level) {
-        case LogLevel.TRACE:
-          System.Diagnostics.Trace.WriteLine(str);
-          break;
-        case LogLevel.DEBUG:
-        case LogLevel.INFO:
-        case LogLevel.WARNING:
         case LogLevel.ERROR:
         case LogLevel.CRITICAL:
         case LogLevel.EMERGENCY:
-          System.Diagnostics.Debug.WriteLine(str);
+          Trace.TraceError(str);
           break;
+
+        case LogLevel.WARNING:
+          Trace.TraceWarning(str);
+          break;
+
+        case LogLevel.INFO:
+          Trace.TraceInformation(str);
+          break;
+
+        case LogLevel.TRACE:
+        case LogLevel.DEBUG:
+          Debug.WriteLine(str);
+          break;
+
         default:
           // TODO: Self logging
-          System.Diagnostics.Debug.WriteLine(str);
+          Debug.WriteLine(str);
           break;
       }
     }
