@@ -44,8 +44,13 @@ namespace Andr3as07.Logging {
 
         // Resolve data
         for (int i = 0; i < data.Length; i++) {
-          if (data[i] is ITuple dataEntry) {
-            context[(string)dataEntry[0]] = dataEntry[1];
+#if !(NETFRAMEWORK || NETSTANDARD)
+          if (data[i] is ITuple dataEntry1) {
+            context[(string)dataEntry1[0]] = dataEntry1[1];
+          } else
+#endif
+          if (data[i] is Tuple<string, object> dataEntry2) {
+            context[dataEntry2.Item1] = dataEntry2.Item2;
           }
         }
       }

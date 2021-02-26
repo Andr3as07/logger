@@ -16,9 +16,6 @@ namespace Andr3as07.Logging.Sink {
       [LogLevel.Emergency] = (ConsoleColor.Yellow, ConsoleColor.Red),
     };
 
-    public ColoredConsoleSink() {
-    }
-
     public void Dispatch(LogLevel level, DateTime time, string message, Dictionary<string, object> context, params object[] data) {
       lock (Lock) {
         Console.ForegroundColor = ColorCodes[level].Item1;

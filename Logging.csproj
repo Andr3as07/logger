@@ -1,12 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFrameworks>netcoreapp3.1;netcoreapp2.1;netstandard2.0;net47</TargetFrameworks>
     <RootNamespace>Andr3as07.Logging</RootNamespace>
+    <PackageId>Andr3as07.Logging</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Andr3as07</Authors>
+    <Title>Andr3as07's Logger</Title>
+    <PackageTags>Logging</PackageTags>
+    <ProjectUrl>https://github.com/Andr3as07/logger</ProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Security.Principal.Windows" Version="6.0.0-preview.1.21102.12" />
+    <PackageReference Include="System.Security.Principal.Windows" Version="5.0.0" />
+    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.2.0" />
   </ItemGroup>
 
 </Project>
