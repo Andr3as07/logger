@@ -7,12 +7,15 @@ namespace Andr3as07.Logging.Formater {
   public class JsonTextFormater : ITextFormater {
     private const int DefaultWriteBufferCapacity = 1024;
 
+    private static string JsonEscape(string input) {
+      return input.Replace("\"", "\\\"").Replace("\\", "\\\\");
+    }
+
     public string FormatText(LogLevel level, DateTime time, string message, Dictionary<string, object> context) {
       StringBuilder builder = new StringBuilder(DefaultWriteBufferCapacity);
       builder.Append("{\"Timestamp\":").Append(new DateTimeOffset(time).ToUnixTimeMilliseconds());
       builder.Append(",\"Level\":\"").Append(level).Append("\",");
-      message = message.Replace("\"", "\\\"");
-      builder.Append("\"Message\":\"").Append(message).Append("\"");
+      builder.Append("\"Message\":\"").Append(JsonEscape(message)).Append("\"");
       if (context.Count > 0) {
         builder.Append(",\"Properties\":{");
 
@@ -31,8 +34,7 @@ namespace Andr3as07.Logging.Formater {
           first = false;
 
           if (value is string svalue) {
-            string cleaned = svalue.Replace("\"", "\\\"");
-            builder.Append("\"").Append(skey).Append("\":\"").Append(cleaned).Append("\"");
+            builder.Append("\"").Append(skey).Append("\":\"").Append(JsonEscape(svalue)).Append("\"");
           } else if (value is int) {
             builder.Append("\"").Append(skey).Append("\":").Append(value);
           } else if (value is float fvalue) {
